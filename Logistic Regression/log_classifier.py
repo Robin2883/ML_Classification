@@ -23,15 +23,11 @@ print(y)
 
 #splitting train & test data
 X_train, X_test, y_train, y_test= train_test_split(X, y, test_size=0.2, random_state=42)
-print(X_train)
-print(X_test)
 
 #scaling features
 sc=StandardScaler()
 X_train_scaled=sc.fit_transform(X_train)
-X_test_scaled=sc.fit(X_test)
-print(X_train_scaled)
-print(X_test_scaled)
+X_test_scaled=sc.transform(X_test)
 
 #training model
 regr=LogisticRegression(random_state=42)
