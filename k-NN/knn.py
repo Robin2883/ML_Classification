@@ -25,19 +25,17 @@ X_train, X_test, y_train, y_test= train_test_split(X, y, test_size=0.2, random_s
 #scaling features
 sc=StandardScaler()
 X_train_scaled=sc.fit_transform(X_train)
-X_test_scaled=sc.fit(X_test)
-print(X_train_scaled)
-print(X_test_scaled)
+X_test_scaled=sc.transform(X_test)
 
 #training model
 regr=KNeighborsClassifier(n_neighbors=5, metric='minkowski', p=2)
-regr.fit(X_train, y_train)
+regr.fit(X_train_scaled, y_train)
 
 #prediction 
-y_pred=regr.predict(X_test)
+y_pred=regr.predict(X_test_scaled)
 print(y_pred)
 
-proba=regr.predict_proba(X_test)
+proba=regr.predict_proba(X_test_scaled)
 print(proba)
 
 accuracy=accuracy_score(y_test, y_pred)

@@ -34,10 +34,10 @@ regr=LogisticRegression(random_state=42)
 regr.fit(X_train, y_train)
 
 #prediction 
-y_pred=regr.predict(X_test)
+y_pred=regr.predict(X_test_scaled)
 print(y_pred)
 
-proba=regr.predict_proba(X_test)
+proba=regr.predict_proba(X_test_scaled)
 print(proba)
 
 
